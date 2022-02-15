@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+body {
+  background-color: rgb(15, 15, 15);
+}
+
+.App {
+  display: flex;
+  position: relative;
+}

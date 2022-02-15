@@ -1,0 +1,89 @@
+.list-main-container {
+  width: 100%;
+  background-color: rgb(63, 63, 63);
+  color: rgb(81, 255, 0);
+  box-shadow: 2px 2.2px 0px 1px rgb(97, 97, 97);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.25rem;
+  margin: 1%;
+  position: relative;
+  transition: top 2s linear, width 2s linear, box-shadow 0.15s linear;
+}
+
+.list-main-container:hover {
+  box-shadow: 0px 0px 0px 1px rgb(97, 97, 97);
+  cursor: pointer;
+}
+
+#active-list {
+  box-shadow: 0px 0px 0px 0.5px rgb(97, 97, 97);
+}
+
+#active-list::after,
+#active-list::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  background: radial-gradient(
+    circle,
+    rgba(64, 255, 0, 0.2) 50%,
+    rgba(0, 255, 4, 1) 100%
+  );
+  top: -2px;
+  left: -2.5px;
+  width: 101%;
+  height: 106%;
+  border-radius: 0.25rem;
+}
+#active-list::after {
+  animation: selected 10s linear infinite;
+}
+
+#active-list::before {
+  animation: selectedAlternate 10s linear infinite;
+}
+
+#delete-icon:hover {
+  transform: scale(0.9);
+}
+
+.list-main-container h2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 3%;
+}
+
+@keyframes selected {
+  0%,
+  100% {
+    clip-path: inset(99% 0% 0% 0%);
+  }
+  25% {
+    clip-path: inset(0% 99% 0% 0%);
+  }
+  50% {
+    clip-path: inset(0% 0% 99% 0%);
+  }
+  75% {
+    clip-path: inset(0% 0% 0% 99%);
+  }
+}
+
+@keyframes selectedAlternate {
+  0%,
+  100% {
+    clip-path: inset(0% 0% 99% 0%);
+  }
+  25% {
+    clip-path: inset(0% 0% 0% 99%);
+  }
+  50% {
+    clip-path: inset(99% 0% 0% 0%);
+  }
+  75% {
+    clip-path: inset(0% 99% 0% 0%);
+  }
+}

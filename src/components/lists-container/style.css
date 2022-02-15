@@ -1,0 +1,22 @@
+.list-wrapper-main-container {
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  padding: 0% 2%;
+  margin-top: 5%;
+  height: 800px;
+}
+
+.list-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding: 2%;
+  margin-top: 5%;
+  height: inherit;
+  overflow-y: auto;
+}
