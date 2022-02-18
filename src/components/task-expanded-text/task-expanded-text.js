@@ -5,11 +5,9 @@ const ExpandedTaskText = (props) => {
     const [taskDescription, setTaskDescription] = useState("");
     const updateTaskDescription = (e) => {
         setTaskDescription(e); 
-        //console.log(taskDescription);
         props.updateTaskDescription(e);
     }
 
-    console.log(props.taskClicked)
     return (
         <div className="expanded-task-text-main-container">
             <h3>{props.taskTitle[0]}</h3>

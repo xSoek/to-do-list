@@ -6,18 +6,19 @@ import './App.css';
 const getLocalItems = () => {
   let list = localStorage.getItem('lists');
 
-  if(list) {
+  if(list.length > 2) {
     return JSON.parse(list);
   } else {
-    let task1 = ["New Task", "Task description..."]
-    let task2 = ["New Task", "Task description..."]
-    let task3 = ["New Task", "Task description..."]
-    let newList = {
+    let initTask1 = ["New Task", "Task description..."]
+    let initTask2 = ["New Task", "Task description..."]
+    let initTask3 = ["New Task", "Task description..."]
+    let initList = {
       "id": 0, 
       "title": "New List", 
-      "tasks": [task1, task2, task3]
+      "tasks": [initTask1, initTask2, initTask3]
     }
-    return newList; 
+    let initData = [initList]
+    return initData;
   }
 }
 
@@ -37,7 +38,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getLocalItems();
     this.openList(0);
   }
 
