@@ -6,7 +6,7 @@ import './App.css';
 const getLocalItems = () => {
   let list = localStorage.getItem('lists');
 
-  if(list.length > 2) {
+  if(list) {
     return JSON.parse(list);
   } else {
     let initTask1 = ["New Task", "Task description..."]
