@@ -9,7 +9,8 @@ const getLocalItems = () => {
   if(list) {
     return JSON.parse(list);
   } else {
-    return
+    createNewList();
+    return;
   }
 }
 
