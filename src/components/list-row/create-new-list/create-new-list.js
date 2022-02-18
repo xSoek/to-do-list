@@ -1,5 +1,4 @@
 import React from "react";
-import addIcon from "../../../media/images/add.png"
 import "./style.css"
 
 const CreateNewList = (props) => {

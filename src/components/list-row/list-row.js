@@ -1,5 +1,4 @@
 import React from "react";
-import viewListIcon from "../../media/images/viewList.png";
 import deleteIcon from "../../media/images/delete.png";
 import "./style.css"
 

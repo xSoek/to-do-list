@@ -3,7 +3,6 @@ import acceptIcon from "../../media/images/accept.png";
 import cancelIcon from "../../media/images/cancel.png";
 import deleteIcon from "../../media/images/delete.png";
 import editIcon from "../../media/images/edit.png";
-import addIcon from "../../media/images/add.png";
 import "./style.css"
 
 class Task extends React.Component {
