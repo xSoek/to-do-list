@@ -43,7 +43,7 @@ const ListViewer = (props) => {
                     <input id="list-name-input" type="text" value={props.listTitle} onChange={(e) => {titleChanged(e); document.getElementById("input-error-message").style.opacity = 0;}}/>
                     <img src={`${editIcon}`} width="20px" alt="Edit Icon"/>
                 </div>
-                <div className="list-name-icons" style={{width:"50px"}} style={{visibility: (isTitleDifferent !== true ? "hidden" :"visible")}}>
+                <div className="list-name-icons" style={{width:"50px", visibility: (isTitleDifferent !== true ? "hidden" :"visible")}}>
                     <span>
                         <img src={`${acceptIcon}`} onClick={() => {checkValidValue()}} width="20px" alt="Edit Icon"/>
                     </span>
