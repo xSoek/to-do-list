@@ -9,8 +9,15 @@ const getLocalItems = () => {
   if(list) {
     return JSON.parse(list);
   } else {
-    createNewList();
-    return;
+    let task1 = ["New Task", "Task description..."]
+    let task2 = ["New Task", "Task description..."]
+    let task3 = ["New Task", "Task description..."]
+    let newList = {
+      "id": 0, 
+      "title": "New List", 
+      "tasks": [task1, task2, task3]
+    }
+    return newList; 
   }
 }
 
