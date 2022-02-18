@@ -7,35 +7,27 @@
   display: flex;
   flex-direction: row;
   background-color: rgb(58, 58, 58);
-  color: greenyellow;
+  color: rgb(81, 255, 0);
   align-items: center;
   justify-content: space-between;
   font-size: 20px;
   position: relative;
 }
-.create-new-task span {
-  position: absolute;
-  content: "";
-  z-index: -1;
-  border-radius: 1rem;
-  background-color: rgb(81, 255, 0);
-  left: -0.5%;
-  top: 0;
-  width: 0%;
-  height: 0%;
+
+.create-new-task {
+  border: 2px solid rgba(255, 255, 255, 0);
+  transition: border 0.25s linear;
 }
 
-.create-new-task:hover {
+.task-main-container:hover {
   cursor: pointer;
 }
-.create-new-task:hover span {
-  transition: width 4.5s ease, height 0.5s ease;
-  width: 100%;
-  height: 105%;
+.create-new-task:hover {
+  border: 2px solid rgb(81, 255, 0);
 }
 
 .create-new-task:hover .add-task-icon {
-  transform: scale(1.7);
+  transform: rotate(180deg) scale(1.7);
 }
 
 .task-main-container input {
@@ -56,12 +48,15 @@
 
 .add-task-icon {
   margin-right: 35px;
-  fill: greenyellow;
-  transition: transform 4.5s linear;
+  fill: rgb(81, 255, 0);
+  transition: transform 0.5s linear;
 }
 
 .task-main-container h2 {
   padding-left: 1.5%;
+  width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 0%;
 }
 
@@ -86,12 +81,17 @@
   align-items: center;
 }
 
+.task-icons img:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .task-icons div img {
-  margin-left: 1000%;
   opacity: 0;
+  transition: opacity 0.25s ease-out;
 }
 
 .task-icons div:hover img {
   cursor: pointer;
-  transition: margin 0.25s ease-out, opacity 1s ease-out;
+  opacity: 1;
 }

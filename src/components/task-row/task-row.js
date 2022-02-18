@@ -19,6 +19,7 @@ class Task extends React.Component {
     }
 
     modifyTask = (newTask) => {
+        console.log(newTask)
         this.setState({taskTitle: newTask})
     }
 
@@ -33,28 +34,19 @@ class Task extends React.Component {
         this.setState({taskState: this.state.previousState})
     }
 
-    playEntryAnimation = (e) => {
-        e.target.children[0].style.marginLeft = "0%"
-        e.target.children[0].style.opacity = "1"
-    }
-
-    playExitAnimation = (e) => {
-        e.target.children[0].style.marginLeft = "1000%"
-        e.target.children[0].style.opacity = "0"
-    }
 
     checkTaskState = () => {
         if(this.state.taskState === 0)
         {
             return (
-                <div className="task-main-container">
-                    <h2>{this.props.title ? this.props.title : "New Task" }</h2>
+                <div className="task-main-container" onClick={() => this.props.setTaskDescription(this.props.index)}>
+                    <h2>{this.props.title ? this.props.title[0] : "New Task" }</h2>
                     <div className="task-icons">
-                        <div onMouseEnter={(e) => {this.playEntryAnimation(e)}} onMouseLeave={(e) => {this.playExitAnimation(e)}}>
+                        <div>
                             <img src={`${editIcon}`} onClick={() => this.changeState(1)} width="25px" height="25px" alt="Edit Icon"/>
                         </div>
-                        <div onMouseEnter={(e) => {this.playEntryAnimation(e)}} onMouseLeave={(e) => {this.playExitAnimation(e)}}>
-                            <img src={`${deleteIcon}`} onClick={() => this.props.deleteTask(this.props.index)}  width="30px" alt="Delete Icon"/>
+                        <div>
+                            <img src={`${deleteIcon}`} onClick={() => this.props.deleteTask(this.props.index)}  width="25px" alt="Delete Icon"/>
                         </div>
                     </div>
                 </div>
@@ -66,7 +58,7 @@ class Task extends React.Component {
         {
             return (
                 <div className="task-main-container">
-                    <input type="text" defaultValue={this.props.title ? this.props.title : "New Task" } onFocus={(e) => e.target.select()} onChange={(e) => this.modifyTask(e.target.value)}/>
+                    <input type="text" defaultValue={this.props.title ? this.props.title[0] : "New Task" } onFocus={(e) => e.target.select()} onChange={(e) => this.modifyTask(e.target.value)}/>
                     <div className="task-icons">
                         <img src={`${acceptIcon}`} onClick={() => {this.props.editTask(this.props.index, this.state.taskTitle); this.changeState(0)}} width="30px" alt="Edit Icon"/>
                         <img src={`${cancelIcon}`}  onClick={() => this.changeToPreviousState()} height="25px" width="25px" alt="Delete Icon"/>
@@ -79,8 +71,7 @@ class Task extends React.Component {
         {
             return (
                 <div className="task-main-container create-new-task" onClick={this.props.createNewTask}>
-                    <span />
-                    <h2>{this.props.title ? this.props.title : "New task" }</h2>
+                    <h2>{this.props.title ? this.props.title : "Create New Task" }</h2>
                     <div className="task-icons">
                         <svg className="add-task-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
                     </div>

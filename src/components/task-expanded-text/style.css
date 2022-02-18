@@ -1,0 +1,38 @@
+.expanded-task-text-main-container {
+  font-family: "Kalam", cursive;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+  width: 100%;
+  max-height: 370px;
+}
+
+.expanded-task-text-main-container h3 {
+  font-size: 30px;
+  margin: 0;
+  height: 48px;
+  color: rgb(81, 255, 0);
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  font-family: "Kalam", cursive;
+  font-size: 20px;
+  background-color: black;
+  color: rgb(81, 255, 0);
+  border: 0px;
+  transition: 0.25s linear;
+  border: 1px solid white;
+}
+textarea:focus {
+  border: 1px solid rgb(72, 255, 0);
+  outline: none;
+}
+textarea:disabled {
+  background-color: rgb(71, 71, 71);
+  border: none;
+}

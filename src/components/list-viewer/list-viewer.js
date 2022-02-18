@@ -43,7 +43,7 @@ const ListViewer = (props) => {
                     <input id="list-name-input" type="text" value={props.listTitle} onChange={(e) => {titleChanged(e); document.getElementById("input-error-message").style.opacity = 0;}}/>
                     <img src={`${editIcon}`} width="20px" alt="Edit Icon"/>
                 </div>
-                <div className="list-name-icons" style={{width:"50px"}} style={isTitleDifferent !== true ? {visibility:"hidden"}: {visibility:"visible"}}>
+                <div className="list-name-icons" style={{width:"50px"}} style={isTitleDifferent !== true ? {visibility:"hidden"} : {visibility:"visible"}}>
                     <span>
                         <img src={`${acceptIcon}`} onClick={() => {checkValidValue()}} width="20px" alt="Edit Icon"/>
                     </span>
@@ -55,7 +55,7 @@ const ListViewer = (props) => {
             </div> 
             <p id="input-error-message"> Invalid input value</p>
 
-            <TasksWrapper data={props.data} editTask={props.editTask} deleteTask={props.deleteTask} createNewTask={props.createNewTask}/>
+            <TasksWrapper data={props.data} editTask={props.editTask} deleteTask={props.deleteTask} createNewTask={props.createNewTask} setTaskDescription={props.setTaskDescription} />
         </div>
     )
 }

@@ -20,6 +20,10 @@ class App extends React.Component {
       data: getLocalItems(),
       currentListIndex: 0,
       currentListName: "New List",
+      taskClicked: false,
+      taskIndex: 0,
+      currentTaskDescription: "", 
+      currentTaskTitle: "", 
       IDcounter: 0,
     }
   }
@@ -42,7 +46,14 @@ class App extends React.Component {
   }
 
   createNewList = () => {
-    let newList = {"id": this.state.IDcounter, "title": "New List", "tasks": ["New Task 1", "New Task 2", "New Task 3"]}
+    let task1 = ["New Task", "Task description..."]
+    let task2 = ["New Task", "Task description..."]
+    let task3 = ["New Task", "Task description..."]
+    let newList = {
+      "id": this.state.IDcounter, 
+      "title": "New List", 
+      "tasks": [task1, task2, task3]
+    }
 
     this.setState({IDcounter: this.state.IDcounter + 1})
     this.setState({currentListName: newList.title})
@@ -58,8 +69,8 @@ class App extends React.Component {
 
   openList = (index) => {
     if(this.state.data[index] !== undefined) {
-      console.log("OPENING list with index: " + index);
-      console.log(this.state.data[index]);
+     /* console.log("OPENING list with index: " + index);
+      console.log(this.state.data[index]);*/
       this.setState({currentListIndex: index})
       this.setState({currentListName: this.state.data[index].title})
 
@@ -74,7 +85,7 @@ class App extends React.Component {
 
 
   deleteList = (index) => {
-    console.log("trying to delete: " + index)
+    //console.log("trying to delete: " + index)
     let tempArr = this.state.data;
     tempArr.splice(index, 1);
 
@@ -87,11 +98,13 @@ class App extends React.Component {
       this.setState({currentListIndex: 0, currentListName: this.state.data[0].title});
       this.openList(0);
     }
+
+    this.setState({taskClicked: false, currentTaskDescription: "", currentTaskTitle: "" });
   }
 
   createNewTask = () => {
-    console.log("new task created")
-    let newTask = "new Task";
+    //console.log("new task created")
+    let newTask = ["New Task",  "task description trial"]
     let tempArr = this.state.data;
     tempArr[this.state.currentListIndex].tasks.push(newTask)
     this.setState({data: tempArr});
@@ -100,17 +113,39 @@ class App extends React.Component {
   editTask = (taskIndex, task) => {
     let tempArr = this.state.data;
 
-    tempArr[this.state.currentListIndex].tasks[taskIndex] = task
+    tempArr[this.state.currentListIndex].tasks[taskIndex][0] = task
 
     this.setState({data: tempArr});
   }
 
   deleteTask = (taskIndex) => {
+    this.setState({taskClicked: false, currentTaskDescription: "", currentTaskTitle:"" });
     let tempArr = this.state.data;
-
     tempArr[this.state.currentListIndex].tasks.splice(taskIndex, 1);
-
     this.setState({data: tempArr});
+    console.log(this.state.taskClicked)
+  }
+
+  setTaskDescription = (index) => {
+    console.log(this.state.data[this.state.currentListIndex].tasks[index])
+    if(this.state.data[this.state.currentListIndex].tasks[index] === undefined ){
+      this.setState({currentTaskDescription: "",  currentTaskTitle:"", taskClicked: false});
+    } else {
+
+      this.setState({currentTaskDescription: this.state.data[this.state.currentListIndex].tasks[index][1], currentTaskTitle: this.state.data[this.state.currentListIndex].tasks[index],  taskClicked: true, taskIndex: index});
+    }
+
+  }
+
+  updateTaskDescription = (taskDescription) => {
+    this.setState({currentTaskDescription: taskDescription});
+
+    /*console.log(this.state.data[this.state.currentListIndex].tasks)
+    console.log(this.state.data[this.state.currentListIndex].tasks[this.state.taskIndex])*/
+    let tempArr = this.state.data;
+    tempArr[this.state.currentListIndex].tasks[this.state.taskIndex][1] = taskDescription;
+    this.setState({data: tempArr});
+
   }
 
   render () {  
@@ -123,6 +158,7 @@ class App extends React.Component {
           editTask={this.editTask}
           deleteTask={this.deleteTask} 
           createNewTask={this.createNewTask}
+          setTaskDescription={this.setTaskDescription}
 
           handleChange={this.handleListNameChange}
           setListNameToPrevious={this.setListNameToPrevious}
@@ -134,6 +170,11 @@ class App extends React.Component {
           openList={this.openList} 
           createList={this.createNewList}
           deleteList={this.deleteList}
+
+          taskClicked={this.state.taskClicked}
+          taskTitle={this.state.currentTaskTitle}
+          taskDescription={this.state.currentTaskDescription}
+          updateTaskDescription={this.updateTaskDescription}
         />
       </div>
     );
