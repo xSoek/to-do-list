@@ -77,8 +77,6 @@ class App extends React.Component {
 
   openList = (index) => {
     if(this.state.data[index] !== undefined) {
-     /* console.log("OPENING list with index: " + index);
-      console.log(this.state.data[index]);*/
       this.setState({currentListIndex: index})
       this.setState({currentListName: this.state.data[index].title})
 
@@ -93,7 +91,6 @@ class App extends React.Component {
 
 
   deleteList = (index) => {
-    //console.log("trying to delete: " + index)
     let tempArr = this.state.data;
     tempArr.splice(index, 1);
 
@@ -111,7 +108,6 @@ class App extends React.Component {
   }
 
   createNewTask = () => {
-    //console.log("new task created")
     let newTask = ["New Task",  "task description trial"]
     let tempArr = this.state.data;
     tempArr[this.state.currentListIndex].tasks.push(newTask)
@@ -131,11 +127,9 @@ class App extends React.Component {
     let tempArr = this.state.data;
     tempArr[this.state.currentListIndex].tasks.splice(taskIndex, 1);
     this.setState({data: tempArr});
-    console.log(this.state.taskClicked)
   }
 
   setTaskDescription = (index) => {
-    console.log(this.state.data[this.state.currentListIndex].tasks[index])
     if(this.state.data[this.state.currentListIndex].tasks[index] === undefined ){
       this.setState({currentTaskDescription: "",  currentTaskTitle:"", taskClicked: false});
     } else {
@@ -147,9 +141,6 @@ class App extends React.Component {
 
   updateTaskDescription = (taskDescription) => {
     this.setState({currentTaskDescription: taskDescription});
-
-    /*console.log(this.state.data[this.state.currentListIndex].tasks)
-    console.log(this.state.data[this.state.currentListIndex].tasks[this.state.taskIndex])*/
     let tempArr = this.state.data;
     tempArr[this.state.currentListIndex].tasks[this.state.taskIndex][1] = taskDescription;
     this.setState({data: tempArr});
